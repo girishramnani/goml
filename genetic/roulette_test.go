@@ -37,14 +37,14 @@ func TestRoulette(t *testing.T) {
 
 	rw := testableRoulette()
 	wheel := rw.GetDistribution()
-	var new_chr chromosomes
+	var new_chr Chromosomes
 	new_chr = make([]string, rw.numSamples)
 	t.Log(wheel)
 
 	rand.Seed(time.Now().UnixNano())
 	for i := 0; i < rw.numSamples; i++ {
 		r := rand.Float64()
-		new_chr[i] = rw.sample[rw.getNewIndex(r, wheel)]
+		new_chr[i] = rw.sample[rw.GetNewIndex(r, wheel)]
 	}
 
 	rw.sample = new_chr

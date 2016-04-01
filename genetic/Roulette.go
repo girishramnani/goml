@@ -5,13 +5,13 @@ import (
 	"strings"
 )
 
-type chromosomes []string
+type Chromosomes []string
 
 var CHR = [2]byte{'0', '1'}
 
 type RouletteWheel struct {
 	length        int
-	sample        chromosomes
+	sample        Chromosomes
 	totalStrength int
 	numSamples    int
 }
@@ -29,7 +29,7 @@ func generateSample(length int) string {
 
 }
 
-func (rw *RouletteWheel) getNewIndex(prob float64, wheel []float64) int {
+func (rw *RouletteWheel) GetNewIndex(prob float64, wheel []float64) int {
 	for t := 0; t < rw.numSamples; t++ {
 		if prob < wheel[t] {
 			return t
@@ -38,7 +38,7 @@ func (rw *RouletteWheel) getNewIndex(prob float64, wheel []float64) int {
 	return -1
 }
 
-func getTotalStrength(c chromosomes) int {
+func getTotalStrength(c Chromosomes) int {
 	d := 0
 
 	for i := 0; i < len(c); i++ {
